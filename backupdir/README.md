@@ -192,7 +192,6 @@ egrep '(World$)' newfile
 ## OUTPUT
 
 ![alt text](<Screenshot at 2025-10-14 23-41-48.png>)
-
 egrep '((W|w)orld$)' newfile 
 ## OUTPUT
 
@@ -299,7 +298,6 @@ seq 2 | sed '2i hello'
 ## OUTPUT
 
 ![alt text](<Screenshot at 2025-10-15 00-08-07.png>)
-
 seq 10 | sed '2,9c hello'
 ## OUTPUT
 ![alt text](<Screenshot at 2025-10-15 00-08-50.png>)
@@ -365,7 +363,7 @@ cat urllist.txt | tr -d ' ' | tr -s '.'
 #Backup commands
 tar -cvf backup.tar *
 ## OUTPUT
-![alt text](<Screenshot at 2025-10-15 23-22-59.png>)
+
 
 mkdir backupdir
  
@@ -375,32 +373,29 @@ cd backupdir
  
 tar -tvf backup.tar
 ## OUTPUT
-![alt text](<Screenshot at 2025-10-15 23-25-01.png>)
+
 
 tar -xvf backup.tar
 ## OUTPUT
-![alt text](<Screenshot at 2025-10-15 23-25-57.png>)
 
 gzip backup.tar
 
 ls .gz
 ## OUTPUT
- ![alt text](<Screenshot at 2025-10-15 23-27-56.png>)
-
+ 
 gunzip backup.tar.gz
-
 ## OUTPUT
-![alt text](<Screenshot at 2025-10-15 23-28-50.png>)
+
  
 # Shell Script
 ```
 echo '#!/bin/sh' > my-script.sh
-echo 'echo Hello World'; exit 0 >> my-script.sh
+echo 'echo Hello World‘; exit 0 >> my-script.sh
 ```
 chmod 755 my-script.sh
 ./my-script.sh
 ## OUTPUT
-![alt text](<Screenshot at 2025-10-15 23-38-51.png>)
+
  
 cat << stop > herecheck.txt
 ```
@@ -412,11 +407,11 @@ stop
 
 cat herecheck.txt
 ## OUTPUT
-![alt text](<Screenshot at 2025-10-15 23-42-25.png>)
+
 
 cat < scriptest.sh 
 ```bash
-#!/bin/sh
+\#!/bin/sh
 echo “File name is $0 ”
 echo "File name is " `basename $0`
 echo “First arg. is ” $1
@@ -432,7 +427,7 @@ ps
 
 cat scriptest.sh 
 ```bash
-#!/bin/sh
+\#!/bin/sh
 echo “File name is $0 ”
 echo "File name is " `basename $0`
 echo “First arg. is ” $1
@@ -450,11 +445,10 @@ chmod 777 scriptest.sh
 ./scriptest.sh 1 2 3
 
 ## OUTPUT
-![alt text](<Screenshot at 2025-11-15 13-35-36.png>) 
 
+ 
 ls file1
 ## OUTPUT
-![alt text](<Screenshot at 2025-11-15 13-36-54.png>)
 
 echo $?
 ## OUTPUT 
@@ -463,21 +457,19 @@ bash: ./one: Permission denied
  
 echo $?
 ## OUTPUT 
-![alt text](<Screenshot at 2025-11-15 13-37-33.png>) 
-
+ 
 abcd
  
 echo $?
  ## OUTPUT
 
-![alt text](<Screenshot at 2025-11-15 13-39-11.png>)
 
  
 # mis-using string comparisons
 
 cat < strcomp.sh 
 ```bash
-#!/bin/bash
+\#!/bin/bash
 val1=baseball
 val2=hockey
 if [ $val1 \> $val2 ]
@@ -491,7 +483,7 @@ fi
 
 cat strcomp.sh 
 ```bash
-#!/bin/bash
+\#!/bin/bash
 val1=baseball
 val2=hockey
 if [ $val1 \> $val2 ]
@@ -501,7 +493,7 @@ else
 echo "$val1 is less than $val2"
 fi
 ```
-
+##OUTPUT
 
 
 
@@ -509,12 +501,12 @@ chmod 755 strcomp.sh
  
 ./strcomp.sh 
 ## OUTPUT
-![alt text](<Screenshot at 2025-11-15 13-40-57.png>)
+
 
 # check file ownership
 cat < psswdperm.sh 
 ```bash
-#!/bin/bash
+\#!/bin/bash
 if [ -O /etc/passwd ]
 then
 echo “You are the owner of the /etc/passwd file”
@@ -536,11 +528,11 @@ fi
  ```
 ./psswdperm.sh
 ## OUTPUT
-![alt text](<Screenshot at 2025-11-15 13-45-54.png>)
+
 # check if with file location
 cat>ifnested.sh 
 ```bash
-#!/bin/bash
+\#!/bin/bash
 if [ -e $HOME ]
 then
 echo “$HOME The object exists, is it a file?”
@@ -583,12 +575,12 @@ fi
 ./ifnested.sh 
 ## OUTPUT
 
-![alt text](<Screenshot at 2025-11-15 13-49-25.png>)
+
 
 # using numeric test comparisons
 cat > iftest.sh 
 ```bash
-#!/bin/bash
+\#!/bin/bash
 val1=10
 val2=11
 if [ $val1 -gt 5 ]
@@ -607,7 +599,7 @@ fi
 
 cat iftest.sh 
 ```bash
-#!/bin/bash
+\#!/bin/bash
 val1=10
 val2=11
 if [ $val1 -gt 5 ]
@@ -625,13 +617,12 @@ fi
 $ chmod 755 iftest.sh
  
 $ ./iftest.sh 
+##OUTPUT
 
-## OUTPUT
-![alt text](<Screenshot at 2025-11-15 13-53-02.png>)
 # check if a file
 cat > ifnested.sh 
 ```bash
-#!/bin/bash
+\#!/bin/bash
 if [ -e $HOME ]
 then
 echo “$HOME The object exists, is it a file?”
@@ -653,7 +644,7 @@ fi
 
 cat ifnested.sh 
 ```bash
-#!/bin/bash
+\#!/bin/bash
 if [ -e $HOME ]
 then
 echo “$HOME The object exists, is it a file?”
@@ -675,13 +666,12 @@ fi
 $ chmod 755 ifnested.sh
  
 $ ./ifnested.sh 
+##OUTPUT
 
-## OUTPUT
-![alt text](<Screenshot at 2025-11-15 13-56-00.png>)
 # looking for a possible value using elif
 cat elifcheck.sh 
 ```bash
-#!/bin/bash
+\#!/bin/bash
 if [ $USER = Ram ]
 then
 echo "Welcome $USER"
@@ -705,12 +695,12 @@ $ chmod 755 elifcheck.sh
  
 $ ./elifcheck.sh 
 ## OUTPUT
-![alt text](<Screenshot at 2025-11-15 13-58-09.png>)
+
 
 # testing compound comparisons
 cat> ifcompound.sh 
 ```bash
-#!/bin/bash
+\#!/bin/bash
 if [ -d $HOME ] && [ -w $HOME ]
 then
 echo "The file exists and you can write to it"
@@ -719,10 +709,9 @@ echo "I cannot write to the file"
 fi
 ```
 $ chmod 755 ifcompound.sh
-
 $ ./ifcompound.sh 
 ## OUTPUT
-![alt text](<Screenshot at 2025-11-15 13-59-43.png>)
+
 # using the case command
 cat >casecheck.sh 
 ```bash
@@ -741,8 +730,6 @@ esac
 $ chmod 755 casecheck.sh 
  
 $ ./casecheck.sh 
-## OUTPUT
-![alt text](<Screenshot at 2025-11-15 14-01-02.png>)
  
 cat > whiletest
 ```bash
@@ -758,12 +745,11 @@ done
 $ chmod 755 whiletest.sh
  
 $ ./whiletest.sh
- ## OUTPUT
- ![alt text](<Screenshot at 2025-11-15 14-06-01.png>)
+ 
  
 cat untiltest.sh 
 ```bash
-#using the until command
+\#using the until command
 var1=100
 until [ $var1 -eq 0 ]
 do
@@ -773,13 +759,12 @@ done
 ``` 
 $ chmod 755 untiltest.sh
  
- ## OUTPUT
-![alt text](<Screenshot at 2025-11-15 14-20-04.png>)
+ 
  
 cat forin1.sh 
 ```bash
-#!/bin/bash
-#basic for command
+\#!/bin/bash
+\#basic for command
 for test in Alabama Alaska Arizona Arkansas California Colorado
 do
 echo The next state is $test
@@ -787,12 +772,12 @@ done
  ```
  
 $ chmod 755 forin1.sh
-![alt text](<Screenshot at 2025-11-15 14-21-18.png>) 
+ 
  
 cat forin2.sh 
 ```bash
-#!/bin/bash
-# another example of how not to use the for command
+\#!/bin/bash
+\# another example of how not to use the for command
 for test in I don't know if this'll work
 do
 echo “word:$test”
@@ -803,8 +788,8 @@ $ chmod 755 forin2.sh
  
 cat forin2.sh 
 ```bash
-#!/bin/bash
-# another example of how not to use the for command
+\#!/bin/bash
+\# another example of how not to use the for command
 for test in I don't know if this'll work
 do
 echo “word:$test”
@@ -813,23 +798,18 @@ done
 $ chmod 755 forin2.sh
  
 $ ./forin2.sh 
-
- ![alt text](<Screenshot at 2025-11-15 14-30-36.png>)
-
+ 
 cat forin3.sh 
 ```bash
-#!/bin/bash
-# another example of how not to use the for command
+\#!/bin/bash
+\# another example of how not to use the for command
 for test in I don\'t know if "this'll" work
 do
 echo "word:$test"
 done
 ```
 $ ./forin3.sh 
- ## OUTPUT
-
- ![alt text](<Screenshot at 2025-11-18 20-32-17.png>)
-
+ 
 cat forin1.sh 
 ```bash
 #!/bin/bash
@@ -842,9 +822,6 @@ done
 $ chmod 755 forin1.sh
 
 ## OUTPUT
-
-![alt text](<Screenshot at 2025-11-18 20-34-20.png>)
-
 cat forinfile.sh 
 ```bash
 #!/bin/bash
@@ -852,13 +829,11 @@ cat forinfile.sh
 file="cities"
 for state in `cat $file`
 do
-echo "Visit beautiful $file"
+echo "Visit beautiful $file“
 done
 ```
 $ chmod 777 forinfile.sh
-
 $ cat cities
-```
 Hyderabad
 Alampur
 Basara
@@ -866,11 +841,9 @@ Warangal
 Adilabad
 Bhadrachalam
 Khammam
-```
 
 ## OUTPUT
 
-![alt text](<Screenshot at 2025-11-18 20-50-16.png>)
 
 cat forctype.sh 
 ```bash
@@ -880,12 +853,10 @@ for (( i=1; i <= 5; i++ ))
 do
 echo "The value of i is $i"
 done
-```
+````
 $ chmod 755 forctype.sh
 $ ./forctype.sh 
 ## OUTPUT
-
-![alt text](<Screenshot at 2025-11-18 20-50-41.png>)
 
 cat forctype1.sh 
 ```bash
@@ -899,8 +870,6 @@ done
 $ chmod 755 forctype.sh
 $ ./forctype1.sh 
 ## OUTPUT
-
-![alt text](image.png)
 
 cat fornested1.sh 
 ```bash
@@ -920,7 +889,6 @@ $ chmod 755 fornested1.sh
 $ ./fornested1.sh 
  ## OUTPUT
 
-![alt text](<Screenshot at 2025-11-18 20-52-29.png>)
  
 cat forbreak.sh 
 ```bash
@@ -934,17 +902,15 @@ break
 fi
 echo "Iteration number: $var1"
 done
-echo "The for loop is completed"
+echo "The for loop is completed“
 ```
+## OUTPUT
+
 $ chmod 755 forbreak.sh
  
 $ ./forbreak.sh 
-
-## OUTPUT
-
-![alt text](<Screenshot at 2025-11-18 20-55-28.png>)
  
-cat forcontinue.sh 
+cat forbreak.sh 
 ```bash
 #!/bin/bash
 # breaking out of a for loop
@@ -956,7 +922,7 @@ continue
 fi
 echo "Iteration number: $var1"
 done
-echo "The for loop is completed"
+echo "The for loop is completed“
 ```
 
  
@@ -965,15 +931,13 @@ $ chmod 755 forcontinue.sh
 $ ./forcontinue.sh 
 ## OUTPUT
  
-![alt text](<Screenshot at 2025-11-18 21-10-21.png>)
-
 cat exread.sh 
 ```bash
 #!/bin/bash
 # testing the read command
 echo -n "Enter your name: "
 read name
-echo "Hello $name, welcome to my program."
+echo "Hello $name, welcome to my program. "
  ```
  
 $ chmod 755 exread.sh 
@@ -981,22 +945,22 @@ $ chmod 755 exread.sh
 $ ./exread.sh 
 ## OUTPUT
 
-![alt text](<Screenshot at 2025-11-18 21-09-55.png>)
 
  cat exread1.sh
 ```bash
 #!/bin/bash
 # testing the read command
 read -p "Enter your name: " name
-echo "Hello $name, welcome to my program."
+echo "Hello $name, welcome to my program. “
 ``` 
 $ chmod 755 exread1.sh 
 
-$ ./exread1.sh 
 ## OUTPUT
 
-![alt text](<Screenshot at 2025-11-18 21-09-18.png>)
 
+
+$ ./exread1.sh 
+ 
 cat funcex.sh
 ```bash
 #!/bin/bash
@@ -1012,12 +976,12 @@ else
 echo "Usage: badtest1 a b"
 fi
 ```
+## OUTPUT
  ./funcex.sh 
+
+ 
  ./funcex.sh 1 2
 
-## OUTPUT
-
-![alt text](<Screenshot at 2025-11-18 21-08-02.png>)
  
 cat argshift.sh
 ```bash
@@ -1028,12 +992,10 @@ cat argshift.sh
 done
 ```
 $ chmod 777 argshift.sh
-$ ./argshift.sh 1 2 3
 
 ## OUTPUT
+$ ./argshift.sh 1 2 3
  
-![alt text](<Screenshot at 2025-11-18 21-07-35.png>)
-
  cat argshift1.sh
 ```bash
  #/bin/bash 
@@ -1047,13 +1009,10 @@ for (( i=0;i<$ELEMENTS;i++)); do
     echo ${args[${i}]} 
 done
 ```
-$ chmod 777 argshift1.sh
-$ ./argshift1.sh 1 2 3
-
+$ chmod 777 argshift.sh
 ## OUTPUT
+$ ./argshift.sh 1 2 3
  
-![alt text](<Screenshot at 2025-11-18 21-07-09.png>)
-
 cat argshift.sh
 ```bash
 #!/bin/bash 
@@ -1064,12 +1023,10 @@ while (( "$#" )); do
 done
 set +x
 ```
- ./argshift.sh 1 2 3
-
 ## OUTPUT
+ ./argshift.sh 1 2 3
  
- ![alt text](<Screenshot at 2025-11-18 21-06-45.png>)
-
+ 
 cat > nc.awk
 ```bash
 BEGIN{}
@@ -1078,17 +1035,13 @@ print len=length($0),"\t",$0
 wordcount+=NF
 chrcnt+=len
 }
-END {}
-{
+END {
 print "total characters",chrcnt 
 print "Number of Lines are",NR
 print "No of Words count:",wordcount
 }
-
-```
-
+ ```
 cat>data.dat
-
 ```bash
 bcdfghj
 abcdfghj
@@ -1104,8 +1057,6 @@ ubcdfghj
 awk -f nc.awk data.dat
 ## OUTPUT 
  
-![alt text](<Screenshot at 2025-11-18 21-06-05.png>)
-
 cat > palindrome.sh
 ```bash
 #num=545
@@ -1133,7 +1084,6 @@ fi
 ```
 ## OUTPUT 
 
-![alt text](<Screenshot at 2025-11-18 21-05-08.png>)
 
 # RESULT:
 The Commands are executed successfully.
